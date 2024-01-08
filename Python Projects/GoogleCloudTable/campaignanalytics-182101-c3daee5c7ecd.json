@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "campaignanalytics-182101",
+  "private_key_id": "c3daee5c7ecda60e61a8d8825d4c6cfb0fdffebd",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQC91p0N9bJRRsUV\nV9RaRMAN8cRMnrBARSJapC5cCS4NOfxm+n2hVMTibm6fiwt8mXvOKK4kTyk++2K0\nUe+YGg1NYWGnISWh4ymM8jOL7IV0K163uWLcsl8/TrZVJM4szK7g/QyDYTTBwLnc\nS6NbDMMFI1xd1vROjkFmqjhmrpcdKRMwQmyN28dZpthi67sotQrhxX1j8oU8tbcj\nEBlHc+l6/Nd/WiisF+xPOA0TemMQU6/Vc2Kg1MQ+dqTKBgaIfgX8TpTUz0Rkyrj0\n1ZNyTxZ+6i6SiyBlJAz64cB717IBeDT4hmrEAspsE6SQAhnAOQessof2BD/2WQOF\niGlKIERfAgMBAAECggEASq7gKYpDxRrQ1QUxCvQqFDJNVhFF6HrqOXuGq3mHDvgF\ndqPMAcieDjCAv65Nbg7ZuHCjlbA420i9e5AScKWrHwqVBtGRAv+hrIvqQH1jwSCA\nykmZ/ZYEx5yZOaTZoaFCmUuj/RmkTicaV3LASMUcAez33QkAItlvHEsSFj9QPs1n\n0gazakv7CrCsr2ZeuOA8t3MOWMM1slYF3W9QGNGvCvY+lpHpXpBRXCfzhFlDzKKK\ngqwpvxCTjEknWFDxIgRVfo0IdDmgAU1rBnnu5Ewqn7SSTmEWnk0vRk6HSZI34662\nRt0B8TCTJO8ega9+vTUyUX4gPyE36Iw8g7QB2xrhzQKBgQD38oLDwMcnGiWH4+mn\n3arMErEw1mb6WHLZxxbmER989V9YXQZ+YxslIyXeBg0kSGFHTdyfDOc5T5bHKLxE\nxtdhIDs0CEj4vAlA8rWs4ov9+dO/Nj56XkpVrk81sf0BU/EsIQhHFIal0EQSAiWU\nlhL5xAOPhO5iBeein72UD+5hrQKBgQDEAPjDTBdWl2lKvIdrJjuaQU/tDjZXIVQi\ncnnqyEG1bkOJlNr4oHoSEYg4eOhe+j6z9bPDV51ZKMjdCNoZLwBxlhqvnAjT44XG\nqyj1FzdDb2pJgD0/lAViSkuuba0j6EmeJs835Pp5W/+EKyzHXZzHF4Un+vPyyHEM\n23sJQ+X3uwKBgQCMQkpIk/fUnczXR0044YMpt/U2LELKoVgu65l/gfYvCNrrsIvo\n2QVVB8H3C7NJcAxfeqMv8eunFuezN87wlQ7naYU0FO+6jRwq+mFdMDaC8F0hEH1d\nWZNxTo6OUGZP5v1JulHla64ThHHNQhuiJxcK5SAigs8a8j4rV3O1myF9bQKBgQC1\nh1Tdw6ZFy1t4HV2qDjHbbqvwmF4ZmkOK1800dh3tQ98HGDcpV69W9qfb7ZcBB/F0\nyJWh0I5pWg2WMTGVa2OUz3mNtQyz+aAXXMRFIihLq2+b/Uo8jQHjg33OYcOeYu9z\nquv2D3svVNY0eawyRPADsDPh0FmJPLz/NHMiJKFjKwKBgQC8XsziKePkZMX++VYi\nGlqe087DzVZAodxtO3j7Wq3Z/gqkWXNy5k6i8Vbv1gnszFbmJwNM1OUruB8SPWiq\nzI6ZLtH2+yVAWgp+SqtIaIXDzOhOYkSDJ1C8YgZBUgR4brkR+an0Pfg1VWUQ6C5T\ngqEC+QyRex3eqrb1fk0+vQpxMw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "samarth@campaignanalytics-182101.iam.gserviceaccount.com",
+  "client_id": "110820746945840299479",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/samarth%40campaignanalytics-182101.iam.gserviceaccount.com"
+}
