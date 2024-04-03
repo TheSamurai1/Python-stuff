@@ -1,0 +1,275 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOYoppcA1vxPJJkqQADHRg3",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/TheSamurai1/Python-stuff/blob/main/Football%20Scraper\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 76,
+      "metadata": {
+        "id": "6WiE8bliBVxd"
+      },
+      "outputs": [],
+      "source": [
+        "import requests\n",
+        "standings_url = \"https://fbref.com/en/comps/9/Premier-League-Stats\"\n",
+        "data = requests.get(standings_url)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from bs4 import BeautifulSoup\n",
+        "soup = BeautifulSoup(data.text)\n",
+        "standings_table = soup.select('table.stats_table')[0]\n",
+        "links = standings_table.find_all('a')"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 233
+        },
+        "id": "YM26N0s7G182",
+        "outputId": "4008afb8-f05c-41a6-85d6-49ea18005b1d"
+      },
+      "execution_count": 77,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "IndexError",
+          "evalue": "list index out of range",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mIndexError\u001b[0m                                Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-77-522f87952062>\u001b[0m in \u001b[0;36m<cell line: 3>\u001b[0;34m()\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0;32mfrom\u001b[0m \u001b[0mbs4\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0mBeautifulSoup\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      2\u001b[0m \u001b[0msoup\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mBeautifulSoup\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mdata\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mtext\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 3\u001b[0;31m \u001b[0mstandings_table\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0msoup\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mselect\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'table.stats_table'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      4\u001b[0m \u001b[0mlinks\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mstandings_table\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mfind_all\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'a'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mIndexError\u001b[0m: list index out of range"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "So we used the import requests to let the website we are parsing allow us to scrape the data. We use stats_table since once we do inspect element we notice that is where the data we want is found. Then we want to find the anchor values so the data within the table since there are multiple links here."
+      ],
+      "metadata": {
+        "id": "IWRtxF0mI0GO"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "links = [l.get(\"href\") for l in links]\n",
+        "print(links)\n",
+        "links = [l for l in links if '/squads/' in l]"
+      ],
+      "metadata": {
+        "id": "msWkK87vJCLe"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "team_urls = [f\"https://fbref.com{l}]\" for l in links]"
+      ],
+      "metadata": {
+        "id": "GrjpR8B1LaID"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "We are putting into a list for ease of parsing through it, and easier to put into something. We want the href since that is where the links for the specific teams are stored. We remove the squads portion in the next line since that is useless text. Making an f string to make links for the different teams of data."
+      ],
+      "metadata": {
+        "id": "FMJZr4l_L5OU"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "team_url = team_urls[0]\n",
+        "data = requests.get(team_url)\n",
+        "\n",
+        "import pandas as pd\n",
+        "\n",
+        "matches = pd.read_html(data.text, match = \"Scores & Fixtures\")[0]\n",
+        "#we use pandas cuz panda is easily the best tool to use to make stuff simple and readable"
+      ],
+      "metadata": {
+        "id": "RZQH2Y14MT63"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "soup = BeautifulSoup(data.text)\n",
+        "links= soup.find_all('a')\n",
+        "links = [l.get(\"href\") for l in links]\n",
+        "links = [l for l in links if l and 'all_comps/shooting/' in l]\n",
+        "\n",
+        "data = requests.get(f\"https://fbref.com{links[0]}\")\n",
+        "shooting = pd.read_html(data.text, match = \"Shooting\")[0]"
+      ],
+      "metadata": {
+        "id": "bw8QDX1wNvEL"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "just finding the anchors so we can later acess the hrefs to find the necessary links that we want from the html. We want to make an absolute link, then we used panda dataframe to help make the data readable."
+      ],
+      "metadata": {
+        "id": "qMIUXlDuOUKK"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "shooting.columns = shooting.columns.droplevel() #just drops the first index column that is on the dataframe after parsing from pandas\n",
+        "\n",
+        "team_data = matches.merge(shooting[[\"Date\", \"Sh\", \"SoT\", \"Dist\", \"FK\", \"PK\", \"PKatt\"]], on=\"Date\")\n",
+        "\n",
+        "#just doign something similiar to inner join like in r\n"
+      ],
+      "metadata": {
+        "id": "UpXvf3dqOpMR"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "years = list(range(2022, 2020, -1))\n",
+        "\n",
+        "print(years)\n",
+        "\n",
+        "all_matches = []\n",
+        "\n",
+        "standings_url = \"https://fbref.com/en/comps/9/Premier-League-Stats\"\n",
+        "import time\n",
+        "for year in years:\n",
+        "    data = requests.get(standings_url)\n",
+        "    soup = BeautifulSoup(data.text)\n",
+        "    standings_table = soup.select('table.stats_table')[0]\n",
+        "    #accesses the data frame the table, we do index 0 since we want the first value\n",
+        "\n",
+        "    links = [l.get(\"href\") for l in standings_table.find_all('a')]\n",
+        "    links = [l for l in links if '/squads/' in l]\n",
+        "    team_urls = [f\"https://fbref.com{l}\" for l in links]\n",
+        "    #just doing what we did previously in previous code\n",
+        "\n",
+        "    previous_season = soup.select(\"a.prev\")[0].get(\"href\")\n",
+        "    standings_url = f\"https://fbref.com{previous_season}\"\n",
+        "    #just making the absolute links so we can parse the stuff inside\n",
+        "    for team_url in team_urls:\n",
+        "        team_name = team_url.split(\"/\")[-1].replace(\"-Stats\", \"\").replace(\"-\", \" \")\n",
+        "        data = requests.get(team_url)\n",
+        "        #just getting the data from the team)url which is just a hunk of html\n",
+        "        matches = pd.read_html(data.text, match=\"Scores & Fixtures\")[0]\n",
+        "        #looking for the scores and fixtures table\n",
+        "        soup = BeautifulSoup(data.text)\n",
+        "        links = [l.get(\"href\") for l in soup.find_all('a')]\n",
+        "        links = [l for l in links if l and 'all_comps/shooting/' in l]\n",
+        "        data = requests.get(f\"https://fbref.com{links[0]}\")\n",
+        "        shooting = pd.read_html(data.text, match=\"Shooting\")[0]\n",
+        "        shooting.columns = shooting.columns.droplevel()\n",
+        "        #dropping the first level of the table to make it easier to parse through the indices\n",
+        "        try:\n",
+        "            team_data = matches.merge(shooting[[\"Date\", \"Sh\", \"SoT\", \"Dist\", \"FK\", \"PK\", \"PKatt\"]], on=\"Date\")\n",
+        "        except ValueError:\n",
+        "            continue\n",
+        "        team_data = team_data[team_data[\"Comp\"] == \"Premier League\"]\n",
+        "        #we are doing try and except since we are expecting a specific error from pandas which is a Value Error\n",
+        "        team_data[\"Season\"] = year\n",
+        "        team_data[\"Team\"] = team_name\n",
+        "        #just making the table and all\n",
+        "        all_matches.append(team_data)\n",
+        "        time.sleep(1)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 501
+        },
+        "id": "SE4EDgsAXFcp",
+        "outputId": "23c26719-7b34-48fe-c58e-768cd5173c10"
+      },
+      "execution_count": 79,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[2022, 2021]\n"
+          ]
+        },
+        {
+          "output_type": "error",
+          "ename": "AttributeError",
+          "evalue": "ResultSet object has no attribute 'find_all'. You're probably treating a list of elements like a single element. Did you call find_all() when you meant to call find()?",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mAttributeError\u001b[0m                            Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-79-296aadf5f8e8>\u001b[0m in \u001b[0;36m<cell line: 9>\u001b[0;34m()\u001b[0m\n\u001b[1;32m     13\u001b[0m     \u001b[0;31m#accesses the data frome the table\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     14\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 15\u001b[0;31m     \u001b[0mlinks\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;34m[\u001b[0m\u001b[0ml\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mget\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"href\"\u001b[0m\u001b[0;34m)\u001b[0m \u001b[0;32mfor\u001b[0m \u001b[0ml\u001b[0m \u001b[0;32min\u001b[0m \u001b[0mstandings_table\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mfind_all\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'a'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     16\u001b[0m     \u001b[0mlinks\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;34m[\u001b[0m\u001b[0ml\u001b[0m \u001b[0;32mfor\u001b[0m \u001b[0ml\u001b[0m \u001b[0;32min\u001b[0m \u001b[0mlinks\u001b[0m \u001b[0;32mif\u001b[0m \u001b[0;34m'/squads/'\u001b[0m \u001b[0;32min\u001b[0m \u001b[0ml\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     17\u001b[0m     \u001b[0mteam_urls\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;34m[\u001b[0m\u001b[0;34mf\"https://fbref.com{l}\"\u001b[0m \u001b[0;32mfor\u001b[0m \u001b[0ml\u001b[0m \u001b[0;32min\u001b[0m \u001b[0mlinks\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.10/dist-packages/bs4/element.py\u001b[0m in \u001b[0;36m__getattr__\u001b[0;34m(self, key)\u001b[0m\n\u001b[1;32m   2431\u001b[0m     \u001b[0;32mdef\u001b[0m \u001b[0m__getattr__\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mkey\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   2432\u001b[0m         \u001b[0;34m\"\"\"Raise a helpful exception to explain a common code fix.\"\"\"\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m-> 2433\u001b[0;31m         raise AttributeError(\n\u001b[0m\u001b[1;32m   2434\u001b[0m             \u001b[0;34m\"ResultSet object has no attribute '%s'. You're probably treating a list of elements like a single element. Did you call find_all() when you meant to call find()?\"\u001b[0m \u001b[0;34m%\u001b[0m \u001b[0mkey\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   2435\u001b[0m         )\n",
+            "\u001b[0;31mAttributeError\u001b[0m: ResultSet object has no attribute 'find_all'. You're probably treating a list of elements like a single element. Did you call find_all() when you meant to call find()?"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "match_df = pd.concat(all_matches)\n",
+        "match_df.columns = [c.lower() for c in match_df.columns]\n",
+        "match_df.to_csv(\"matches.csv\")"
+      ],
+      "metadata": {
+        "id": "JvJDELiAZqyh"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [],
+      "metadata": {
+        "id": "fsNnuBYNY1Qz"
+      }
+    }
+  ]
+}
